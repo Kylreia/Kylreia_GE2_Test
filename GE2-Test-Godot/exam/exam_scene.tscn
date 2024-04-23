@@ -27,6 +27,7 @@ script = ExtResource("3_nn25y")
 
 [node name="Boid" type="CharacterBody3D" parent="creature_generator/creature"]
 script = ExtResource("4_0bu0j")
+pause = false
 
 [node name="Head" type="CSGBox3D" parent="creature_generator/creature/Boid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)

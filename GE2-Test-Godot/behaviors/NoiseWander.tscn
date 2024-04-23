@@ -28,6 +28,7 @@ point_count = 9
 [node name="camera follower" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.6254, 17.1365, -32.9351)
 script = ExtResource("7")
+pause = false
 
 [node name="OffsetPursue" type="Node" parent="camera follower"]
 script = ExtResource("5")
@@ -59,6 +60,7 @@ skeleton = NodePath("../..")
 [node name="boid" type="CharacterBody3D" parent="creature"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.4253)
 script = ExtResource("7")
+pause = false
 
 [node name="MeshInstance5" type="MeshInstance3D" parent="creature/boid"]
 transform = Transform3D(1, 0, 0, 0, -8.74228e-08, -1, 0, 2, -4.37114e-08, 0, 0, 0)

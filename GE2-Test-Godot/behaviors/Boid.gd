@@ -15,7 +15,7 @@ var behaviors = []
 @export var damping = 0.1
 
 @export var draw_gizmos = true
-@export var pause = false
+@export var pause = true
 
 var count_neighbors = false
 var neighbors = [] 
