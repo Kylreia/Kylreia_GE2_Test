@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkqpxu6hjvgea"]
+
+[ext_resource type="Script" path="res://behaviors/Harmonic.gd" id="1_dlqe3"]
+[ext_resource type="Script" path="res://behaviors/NoiseWander.gd" id="2_d648q"]
+
+[node name="Head" type="CSGBox3D"]
+
+[node name="Harmonic" type="Node" parent="."]
+script = ExtResource("1_dlqe3")
+
+[node name="NoiseWander" type="Node" parent="."]
+script = ExtResource("2_d648q")

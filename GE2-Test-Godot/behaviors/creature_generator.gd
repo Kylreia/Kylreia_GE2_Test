@@ -8,6 +8,7 @@ extends Node3D
 @export var multiplier = 5
 
 @export var radius:float = 2
+@export var count = 19
 
 func _process(delta):
 	var boid = get_parent()
