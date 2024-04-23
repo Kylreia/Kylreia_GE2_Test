@@ -10,15 +10,21 @@ extends Node3D
 @export var radius:float = 2
 @export var count = 19
 
+var headScene
+var bodyScene
+
 func _process(delta):
-	var boid = get_parent()
-	DebugDraw3D.draw_sphere(boid.global_position, radius, Color.SKY_BLUE)
-	DebugDraw3D.draw_sphere(boid.global_position, radius / 2, Color.FUCHSIA)
+	on_draw_gizmos()
 
 func _ready():
 	if not Engine.is_editor_hint():		
-		pass
+		headScene = load("res://behaviors/Head.tscn")
+		bodyScene = load("res://behaviors/Body.tscn")
+		
 	
 
-
+func on_draw_gizmos():
+	var boid = get_parent()
+	DebugDraw3D.draw_sphere(boid.global_position, radius, Color.SKY_BLUE)
+	DebugDraw3D.draw_sphere(boid.global_position, radius / 2, Color.FUCHSIA)
 
