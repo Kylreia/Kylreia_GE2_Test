@@ -1,14 +1,18 @@
 @tool
 extends Node3D
 
-@onready var length
-@onready var frequency
-@onready var start_angle
-@onready var base_size
-@onready var multiplier
+@export var length = 20
+@export var frequency = 1
+@export var start_angle = 0
+@export var base_size = 1
+@export var multiplier = 5
+
+@export var radius:float = 2
 
 func _process(delta):
-	pass		
+	var boid = get_parent()
+	DebugDraw3D.draw_sphere(boid.global_position, radius, Color.SKY_BLUE)
+	DebugDraw3D.draw_sphere(boid.global_position, radius / 2, Color.FUCHSIA)
 
 func _ready():
 	if not Engine.is_editor_hint():		
