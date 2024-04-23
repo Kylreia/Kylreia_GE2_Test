@@ -27,7 +27,7 @@ func _ready():
 			var body = bodyScene.instantiate()
 			body.transform.origin = Vector3(0,0,pos_count)
 			add_child(body)
-			body.set_script("res://SpineAnimator.gd")
+			body.set_script("res://behaviors/SpineAnimator.gd")
 			pos_count += 1.5
 
 func on_draw_gizmos():
