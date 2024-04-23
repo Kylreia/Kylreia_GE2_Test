@@ -40,7 +40,7 @@ script = ExtResource("3_rysvr")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="creature_generator/creature/Boid"]
 shape = SubResource("SphereShape3D_h2rol")
 
-[node name="Body" type="CSGBox3D" parent="creature_generator/creature"]
+[node name="Body" type="CSGBox3D" parent="creature_generator/creature/Boid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.5)
 script = ExtResource("5_4m74s")
 
