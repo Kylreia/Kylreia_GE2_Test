@@ -5,7 +5,7 @@ extends Marker3D
 # var a = 2
 # var b = "text"
 
-@export var radius = 100
+@export var radius = 50
 
 func moveTarget():
 	var new_target = Utils.random_point_in_unit_sphere() * radius

@@ -1,13 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://b26ra08yh7e5m"]
+[gd_scene load_steps=13 format=3 uid="uid://b26ra08yh7e5m"]
 
 [ext_resource type="Script" path="res://behaviors/root.gd" id="1_prfgg"]
 [ext_resource type="Script" path="res://behaviors/creature_generator.gd" id="2_rauqh"]
+[ext_resource type="Script" path="res://behaviors/SteeringBehavior.gd" id="3_nn25y"]
 [ext_resource type="Script" path="res://behaviors/Harmonic.gd" id="3_rysvr"]
+[ext_resource type="Script" path="res://behaviors/Boid.gd" id="4_0bu0j"]
 [ext_resource type="Script" path="res://behaviors/NoiseWander.gd" id="4_ygbyw"]
 [ext_resource type="Script" path="res://behaviors/SpineAnimator.gd" id="5_4m74s"]
 [ext_resource type="Script" path="res://behaviors/FPController.gd" id="5_8r2ni"]
 [ext_resource type="Environment" uid="uid://b5dnnkkpxo3qc" path="res://behaviors/seek_environment..tres" id="6_qamsj"]
 [ext_resource type="PackedScene" uid="uid://dc24oh4o5erhi" path="res://behaviors/SceneSwitcher.tscn" id="7_ybx0x"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_h2rol"]
 
 [sub_resource type="SphereShape3D" id="18"]
 
@@ -16,22 +20,28 @@ script = ExtResource("1_prfgg")
 
 [node name="creature_generator" type="Node3D" parent="."]
 script = ExtResource("2_rauqh")
+pause = null
 
 [node name="creature" type="Node3D" parent="creature_generator"]
+script = ExtResource("3_nn25y")
 
-[node name="Head" type="CSGBox3D" parent="creature_generator/creature"]
+[node name="Boid" type="CharacterBody3D" parent="creature_generator/creature"]
+script = ExtResource("4_0bu0j")
+
+[node name="Head" type="CSGBox3D" parent="creature_generator/creature/Boid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 
-[node name="Harmonic" type="Node" parent="creature_generator/creature/Head"]
+[node name="NoiseWander" type="Node" parent="creature_generator/creature/Boid"]
+script = ExtResource("4_ygbyw")
+
+[node name="Harmonic" type="Node" parent="creature_generator/creature/Boid"]
 script = ExtResource("3_rysvr")
 
-[node name="NoiseWander" type="Node" parent="creature_generator/creature/Head"]
-script = ExtResource("4_ygbyw")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="creature_generator/creature/Boid"]
+shape = SubResource("SphereShape3D_h2rol")
 
 [node name="Body" type="CSGBox3D" parent="creature_generator/creature"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.5)
-
-[node name="Node" type="Node" parent="creature_generator/creature/Body"]
 script = ExtResource("5_4m74s")
 
 [node name="Target" type="Marker3D" parent="creature_generator"]

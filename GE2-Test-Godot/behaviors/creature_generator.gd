@@ -9,6 +9,8 @@ extends Node3D
 
 @export var radius:float = 2
 
+@export var pause = true
+
 var headScene
 var bodyScene
 
@@ -26,7 +28,6 @@ func _ready():
 			body.transform.origin = Vector3(0,0,pos_count)
 			add_child(body)
 			pos_count += 1.5
-	
 
 func on_draw_gizmos():
 	var target = get_node("Target")
