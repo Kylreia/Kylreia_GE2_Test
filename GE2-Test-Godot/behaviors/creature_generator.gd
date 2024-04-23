@@ -8,7 +8,6 @@ extends Node3D
 @export var multiplier = 5
 
 @export var radius:float = 2
-@export var count = 19
 
 var headScene
 var bodyScene
@@ -21,10 +20,16 @@ func _ready():
 		headScene = load("res://behaviors/Head.tscn")
 		bodyScene = load("res://behaviors/Body.tscn")
 		
+		var pos_count = 6
+		for i in 8:
+			var body = bodyScene.instantiate()
+			body.transform.origin = Vector3(0,0,pos_count)
+			add_child(body)
+			pos_count += 1.5
 	
 
 func on_draw_gizmos():
-	var boid = get_parent()
-	DebugDraw3D.draw_sphere(boid.global_position, radius, Color.SKY_BLUE)
-	DebugDraw3D.draw_sphere(boid.global_position, radius / 2, Color.FUCHSIA)
+	var target = get_node("Target")
+	DebugDraw3D.draw_sphere(target.global_position, radius, Color.SKY_BLUE)
+	DebugDraw3D.draw_sphere(target.global_position, radius / 2, Color.FUCHSIA)
 
